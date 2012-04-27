@@ -1,0 +1,139 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8x]{inputenc}
+
+%opening
+
+\begin{document}
+\begin{titlepage} 
+
+\title{{\LARGE \textbf{Feynman Hughes Malibu\\ Lecture Series}} \\
+FMHL Volume 5\\
+\textbf{Mathmatical Techniques of \\ Engenering \& Physics}\\
+Oct. 1970-June 1971
+Weekly 2 hour lectures\\
+Notes taken and transcribed by \\ John T. Neer}
+\author{}
+\date{}
+
+\maketitle
+
+\end{titlepage}
+
+\renewcommand\contentsname{Lecture}
+\tableofcontents
+\pagebreak
+
+\section{Introduction to the Lectures On Mathmatical Techniques of Engeineering and Physics}
+
+Today begins a new year of lectures and this time we will discuss the subject of mathamatical methods of engineering and physics.
+We will discuss the subject of mathamatical methods of engineering and physics.  We will be discussing such topics as complex
+ notation, vectors, tensors, various special functions like Bessel functions which come about in non-linear problems, fourier transforms
+and series. 
+
+Our problem is not to formulate the physics of a given problem but rather to apply useful mathematical techniques in solving
+the resulting equations.  As such our efforts will not be directed towards generalizing our results to a broad class of problems
+but rather to pay attentions to certain aspects of the problem in question. The first and foremost task before us is to formulate
+an approximation equation which contains the physics and can be approximatly solved. It is important to appreciate that we are 
+not striving for the exact answer but only for an approximatly right answer.  This must be kept in mind as we progress; always 
+remember the accuracy of the desired answer.
+
+\begin{center}
+ Solving an equation
+
+We all know how to solve the simple quadratic equation
+$$ x^2+2x+7=0$$
+And we should know how to solve the cubic equation
+$$x^3+3x^2+x-1=0$$
+but how do we solve for x given the equation
+$$e^x=cosx?$$
+\end{center}
+
+These are simple examples which could be catagorized as a set of equations which are:
+\begin{enumerate}
+ \item Linear, and therefore trivial.
+\item Quadratic and therefore trivial. 
+\item And all the rest which are non trivial.
+\end{enumerate}
+
+It is the third category which interests the most since in the real world all the problems are found in it.
+
+Lets take an example of a cubic equation and see how we might solve it.  Given the cubic which we write as,
+
+\begin{center}$\frac{1}{1+x^2}=2x$
+\end{center}
+we will solve it by the trivial and error method.  If this method gives us the right answer-Great! There is nothing
+wrong with writing down some numbers in the process. This doesn't repressent a cultural lag; it is sick to think that
+it is. 
+
+In order to help us solve the equation we will invent some ways to increase our efficiency in guessing the right answer.
+Lets then form a table of values for x, the left hand side of the equation and the right we will also compute the difference
+between the two sides.  The following steps are taken
+\begin{center}
+\begin{tabular}{p{5cm} c c c r}
+ \centering Step & X & L.H.S. & R.H.S. & Diff\\
+ & & & & {\small LHS-RHS}\\
+
+1. Try x=0 & 0 & 1.000 & .000 & 1.000\\
+2. That didn't work ; try x=1 & 1 & 0.50 & 2.00 & -1.500\\
+3. That didn't work either but we are on either side of the answer. We might guess the answer
+lies .4 of the way between 0 and 1 so lets try x=.5 & .5 & .8 & 1.00 & -2.00\\
+4. We're getting better try x=.4 & .4 & .862 & +.800 & +.62\\
+5. Since the difference in 3 and 4 is on either side of the right answer interpolate between them, i.e. $\Delta=\frac{62}{262}
+=.24$ so try x=.424 & .424 & .847 & .848 &.001
+\end{tabular}
+\end{center}
+
+And now we have the answer to an accuracy of .1\%. So this method is pretty accurate and is better than a machine because
+it can't guess what to do next.
+
+This method of interpolation works when the difference between the two sides of the equation come out to be + and -. 
+When that happens you can interpolate and go again.  One word of caution never use graph paper; it is always easier to use the
+numbers.
+
+There are two more methods which are more appropriate of machine than by hand; they are the method of iteration and newtons method.
+The idea is to write the equation as
+\begin{center}
+ $$x_{out}=\frac{1}{2}\frac{1}{1+x^2_{in}}$$
+\end{center}
+
+where you now try an $x_{in}$ value, .e.g. $x_{in}=0$ and find $x_{out}$; then plug that value back in, etc.
+
+\begin{tabular}{c c c}
+step & $x_{in}$ & $x_{out}$\\
+1 & 0 & .50\\
+2 & .5 & .4\\
+3 & .4 & .431\\
+4 & .431 & .426
+\end{tabular}
+
+If you want a lot of accuracy in the answer this method has an error which decreases more slowly than the previous method. 
+Also you should be careful that the equation is written in the right form otherwise the answer won't converge. To show this solve
+for an $x_{in}$ 
+\begin{center}
+ $$x_{in}=\sqrt{\frac{1}{2x_{out}}-1}$$
+\end{center}
+
+Make a table and start evaluating
+\begin{center}
+\begin{tabular}{c c}
+$x_{in}$ & $x_{out}$\\
+.4 & .5\\
+.5 & 0.0\\
+0 & $\infty$
+
+\end{tabular}
+\end{center}
+
+To see why the right answer is divirging lets substitute \begin{center}$x_{in}=x_{true}+\epsilon_{in}$\end{center}
+where $X_T=\sqrt{\frac{1}{2x_T-1}}$
+
+Then $$\sqrt{\frac{1}{2(x_T+\epsilon_{in})}-1}=\sqrt{(\frac{1}{2x_T-1})-\frac{\epsilon_{in}}{4x_o^2}}=x_o\sqrt{1+\frac{\epsilon_{in}}{4x_o^4}}$$.
+
+Expanding we have $x_o-\frac{\epsilon_{in}}{8x_o^3}$
+
+So that $$\epsilon_{out}=-\frac{1}{8x_o^3}\epsilon_{in}$$
+
+$\epsilon_{out}$ is greater than twice the error in so the answer is divirging. 
+
+
+\end{document}
