@@ -8,7 +8,7 @@
 
 \title{{\LARGE \textbf{Feynman Hughes Malibu\\ Lecture Series}} \\
 FMHL Volume 5\\
-\textbf{Mathmatical Techniques of \\ Engenering \& Physics}\\
+\textbf{Mathematical Techniques of \\ Engineering \& Physics}\\
 Oct. 1970-June 1971
 Weekly 2 hour lectures\\
 Notes taken and transcribed by \\ John T. Neer}
@@ -23,18 +23,18 @@ Notes taken and transcribed by \\ John T. Neer}
 \tableofcontents
 \pagebreak
 
-\section{Introduction to the Lectures On Mathmatical Techniques of Engeineering and Physics}
+\section{Introduction to the Lectures On Mathematical Techniques of Engineering and Physics}
 
-Today begins a new year of lectures and this time we will discuss the subject of mathamatical methods of engineering and physics.
-We will discuss the subject of mathamatical methods of engineering and physics.  We will be discussing such topics as complex
- notation, vectors, tensors, various special functions like Bessel functions which come about in non-linear problems, fourier transforms
+Today begins a new year of lectures and this time we will discuss the subject of mathematical methods of engineering and physics.
+ We will be discussing such topics as complex
+ notation, vectors, tensors, various special functions like Bessel functions which come about in non-linear problems, Fourier transforms
 and series. 
 
 Our problem is not to formulate the physics of a given problem but rather to apply useful mathematical techniques in solving
 the resulting equations.  As such our efforts will not be directed towards generalizing our results to a broad class of problems
 but rather to pay attentions to certain aspects of the problem in question. The first and foremost task before us is to formulate
-an approximation equation which contains the physics and can be approximatly solved. It is important to appreciate that we are 
-not striving for the exact answer but only for an approximatly right answer.  This must be kept in mind as we progress; always 
+an approximate equation which contains the physics and can be approximately solved. It is important to appreciate that we are 
+not striving for the exact answer but only for an approximately right answer.  This must be kept in mind as we progress; always 
 remember the accuracy of the desired answer.
 
 \begin{center}
@@ -48,7 +48,7 @@ but how do we solve for x given the equation
 $$e^x=cosx?$$
 \end{center}
 
-These are simple examples which could be catagorized as a set of equations which are:
+These are simple examples which could be categorized as a set of equations which are:
 \begin{enumerate}
  \item Linear, and therefore trivial.
 \item Quadratic and therefore trivial. 
@@ -61,13 +61,13 @@ Lets take an example of a cubic equation and see how we might solve it.  Given t
 
 \begin{center}$\frac{1}{1+x^2}=2x$
 \end{center}
-we will solve it by the trivial and error method.  If this method gives us the right answer-Great! There is nothing
-wrong with writing down some numbers in the process. This doesn't repressent a cultural lag; it is sick to think that
+we will solve it by the trial and error method.  If this method gives us the right answer-Great! There is nothing
+wrong with writing down some numbers in the process. This doesn't represent a cultural lag; it is sick to think that
 it is. 
 
 In order to help us solve the equation we will invent some ways to increase our efficiency in guessing the right answer.
-Lets then form a table of values for x, the left hand side of the equation and the right we will also compute the difference
-between the two sides.  The following steps are taken
+Let's then form a table of values for x, the left hand side of the equation and the right we will also compute the difference
+between the two sides. The following steps are taken
 \begin{center}
 \begin{tabular}{p{5cm} c c c r}
  \centering Step & X & L.H.S. & R.H.S. & Diff\\
@@ -90,7 +90,7 @@ This method of interpolation works when the difference between the two sides of 
 When that happens you can interpolate and go again.  One word of caution never use graph paper; it is always easier to use the
 numbers.
 
-There are two more methods which are more appropriate of machine than by hand; they are the method of iteration and newtons method.
+There are two more methods which are more appropriate of machine than by hand; they are the method of iteration and Newton's method.
 The idea is to write the equation as
 \begin{center}
  $$x_{out}=\frac{1}{2}\frac{1}{1+x^2_{in}}$$
@@ -124,7 +124,7 @@ $x_{in}$ & $x_{out}$\\
 \end{tabular}
 \end{center}
 
-To see why the right answer is divirging lets substitute \begin{center}$x_{in}=x_{true}+\epsilon_{in}$\end{center}
+To see why the right answer is diverging lets substitute \begin{center}$x_{in}=x_{true}+\epsilon_{in}$\end{center}
 where $X_T=\sqrt{\frac{1}{2x_T-1}}$
 
 Then $$\sqrt{\frac{1}{2(x_T+\epsilon_{in})}-1}=\sqrt{(\frac{1}{2x_T-1})-\frac{\epsilon_{in}}{4x_o^2}}=x_o\sqrt{1+\frac{\epsilon_{in}}{4x_o^4}}$$.
@@ -133,7 +133,38 @@ Expanding we have $x_o-\frac{\epsilon_{in}}{8x_o^3}$
 
 So that $$\epsilon_{out}=-\frac{1}{8x_o^3}\epsilon_{in}$$
 
-$\epsilon_{out}$ is greater than twice the error in so the answer is divirging. 
+$\epsilon_{out}$ is greater than twice the error in so the answer is diverging. 
 
+\begin{center}
+Newton's Method
+\end{center}
+The Newton's method requires writing the function in the form
+$$f(x)=0$$ i.e. 
+$$f(x)=\frac{1}{1+x^2} - 2x = 0$$
 
+If you are close to the answer with a guess, say $x_{1}$ then evaluate $f(x_{1})$ and also $f'(x_{1})$. In this case
+$$f'(x) = \frac{-2x}{(1+x^2)^2} - 2$$
+
+Then the next try would be
+
+$$x_{2}=x_{1}-\frac{f(x_{1})}{f'(x_{1})}$$
+
+Try $$x_{1}=0.5$$ then 
+$$f(x_{1})=\frac{1}{1.25}-1=-0.2$$
+$$f'(x_{1})=\frac{-1}{1.25^2}-2=-2.64$$
+and $$x_{2}=0.5-\frac{0.2}{2.64}=0.424$$
+
+This technique doesn't require much intelligence so it is great for a computer. 
+The answer will always converge except for a few rare examples. 
+However this method involves evaluating both $f(x)$ and $f'(x)$. 
+$f'(x)$ may be hard to compute and difficult to evaluate.
+
+\begin{center}
+Problem: Solve $e^{-x}=cos(x)$ to 1\%
+\end{center}
+
+A word in complex roots. If you made a mistake and didn't do the problem right or you didn't expect the 
+physics right the roots may be complex. To find complex roots you have to solve two equations in two unknowns. 
+This can be done by the same procedure outlined before. Given $f(x,y)=0$ and $g(x,y)=0$ find $y$ as a function
+of $x$ if possible then substitute back into one of the equations.
 \end{document}
