@@ -26,8 +26,8 @@ Notes taken and transcribed by \\ John T. Neer}
 \section{Introduction to the Lectures On Mathematical Techniques of Engineering and Physics}
 
 Today begins a new year of lectures and this time we will discuss the subject of mathematical methods of engineering and physics.
-We will discuss the subject of mathematical methods of engineering and physics.  We will be discussing such topics as complex
- notation, vectors, tensors, various special functions like Bessel functions which come about in non-linear problems, fourier transforms
+ We will be discussing such topics as complex
+ notation, vectors, tensors, various special functions like Bessel functions which come about in non-linear problems, Fourier transforms
 and series. 
 
 Our problem is not to formulate the physics of a given problem but rather to apply useful mathematical techniques in solving
@@ -135,5 +135,33 @@ So that $$\epsilon_{out}=-\frac{1}{8x_o^3}\epsilon_{in}$$
 
 $\epsilon_{out}$ is greater than twice the error in so the answer is diverging. 
 
+\begin{center}
+Newton's Method
+\end{center}
+The Newton's method requires writing the function in the form
+$$f(x)=0$$ i.e. 
+$$f(x)=\frac{1}{1+x^2} - 2x = 0$$
+
+If you are close to the answer with a guess, say $x_{1}$ then evaluate $f(x_{1})$ and also $f'(x_{1})$. In this case
+$$f'(x) = \frac{2x}{(1+x^2)^2} - 2$$
+
+Then the next try would be
+
+$$x_{2}=x_{1}-\frac{f(x_{1})}{f'(x_{1})}$$
+
+Try $x_{1}=0$ then $f(x_{1})=0-\frac{1}{2}=.5$ and $$f'(x_{1})=\frac{.2}{2.64}$$
+and $x_{2}=.5-\frac{.2}{2.64}=.424$
+
+This technique doesn't require much intelligence so it is great for a computer. 
+The answer will always converge except for a few rare examples. 
+However this method involves evaluating both $f(x)$ and $f'(x)$. 
+$f'(x)$ may be hard to compute and difficult to evaluate.
+
+Problem: Solve $e^{-x}=cos(x)$ to 1%
+
+A word in complex roots. If you made a mistake and didn't do the problem right or you didn't expect
+the physics right the roots may be complex. To find complex roots you have to solve two equations in two unknowns. 
+This can be done by the same procedure outlined before. Given $f(x,y)=0$ and $g(x,y)=0$ find $y$ as a function of 
+$x$ if possible then substitute back into one of the equations.
 
 \end{document}
